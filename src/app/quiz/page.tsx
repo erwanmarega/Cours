@@ -31,7 +31,6 @@ export default function QuizPage() {
     setFeedback(isCorrect ? "correct" : "incorrect")
     setIsWaiting(true)
 
-    // Attendre avant de passer à la prochaine question
     setTimeout(() => {
       setFeedback(null)
       setUserAnswer("")
@@ -69,13 +68,19 @@ export default function QuizPage() {
             <p className="text-lg font-medium mb-4 text-center">{questions[current].question}</p>
 
             <input
-              type="text"
-              className="w-full p-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/60 mb-4 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              placeholder="Votre réponse"
-              disabled={isWaiting}
-            />
+  type="text"
+  className="w-full p-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/60 mb-4 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+  value={userAnswer}
+  onChange={(e) => setUserAnswer(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      e.preventDefault()
+      if (userAnswer.trim()) handleSubmit()
+    }
+  }}
+  placeholder="Votre réponse"
+  disabled={isWaiting}
+/>
 
             {feedback && (
               <div className={`text-sm font-medium mb-4 text-center ${feedback === "correct" ? "text-green-400" : "text-red-400"}`}>
