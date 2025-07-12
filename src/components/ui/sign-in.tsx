@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
+import { useRouter } from "next/navigation"
+
+
 
 const GoogleIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 48 48">
@@ -56,9 +59,11 @@ export const SignInPage: React.FC<SignInPageProps> = ({
   onGoogleSignIn,
   onResetPassword,
   onCreateAccount,
+  
 }) => {
   const [showPassword, setShowPassword] = useState(false)
 
+  const router = useRouter()
   return (
     <div className="h-[100dvh] flex flex-col md:flex-row font-geist w-[100dvw] bg-black text-white">
       <section className="flex-1 flex items-center justify-center p-8">
@@ -95,7 +100,8 @@ export const SignInPage: React.FC<SignInPageProps> = ({
                 <a href="#" onClick={(e) => { e.preventDefault(); onResetPassword?.() }} className="hover:underline text-violet-400 transition-colors">Reset password</a>
               </div>
 
-              <button type="submit" className="animate-element animate-delay-600 w-full rounded-2xl bg-primary py-4 font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+              <button type="submit" className="animate-element animate-delay-600 w-full rounded-2xl bg-primary py-4 font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+               onClick={() => router.push("/accueil")}>
                 Sign In
               </button>
             </form>
