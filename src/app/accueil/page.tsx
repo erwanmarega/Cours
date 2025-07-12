@@ -33,63 +33,69 @@ export default function Dashboard() {
           </div>
         </header>
 
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          <SubjectCard
-            title="Mathématiques"
-            description="Algèbre, géométrie, probabilités"
-            icon={<Book className="w-7 h-7 text-white" />}
-            bg="bg-gradient-to-br from-blue-600 to-cyan-500"
-          />
-          <SubjectCard
-            title="Physique"
-            description="Mécanique, ondes, électricité"
-            icon={<Atom className="w-7 h-7 text-white" />}
-            bg="bg-gradient-to-br from-indigo-600 to-purple-600"
-          />
-          <SubjectCard
-            title="Espace"
-            description="Planètes, étoiles, cosmologie"
-            icon={<GlobeIcon className="w-7 h-7 text-white" />}
-            bg="bg-gradient-to-br from-pink-500 to-yellow-400"
-          />
-          <SubjectCard
-            title="Français"
-            description="Grammaire, conjugaison, vocabulaire"
-            icon={<BookText className="w-7 h-7 text-white" />}
-            bg="bg-gradient-to-br from-red-500 to-pink-600"
-          />
-          <SubjectCard
-            title="Anglais"
-            description="Compréhension, expression, culture"
-            icon={<Languages className="w-7 h-7 text-white" />}
-            bg="bg-gradient-to-br from-green-500 to-emerald-500"
-          />
-        </section>
+        <section className="mb-16 flex flex-col items-center gap-10">
+  <div className="flex flex-wrap justify-center gap-8">
+    <SubjectCard
+      title="Mathématiques"
+      description="Algèbre, géométrie, probabilités"
+      icon={<Book className="w-7 h-7 text-white" />}
+      bg="bg-gradient-to-br from-blue-600 to-cyan-500"
+    />
+    <SubjectCard
+      title="Physique"
+      description="Mécanique, ondes, électricité"
+      icon={<Atom className="w-7 h-7 text-white" />}
+      bg="bg-gradient-to-br from-indigo-600 to-purple-600"
+    />
+    <SubjectCard
+      title="Espace"
+      description="Planètes, étoiles, cosmologie"
+      icon={<GlobeIcon className="w-7 h-7 text-white" />}
+      bg="bg-gradient-to-br from-pink-500 to-yellow-400"
+    />
+  </div>
 
-        <section className="relative bg-gradient-to-br from-black via-neutral-900 to-black rounded-3xl border border-white/20 shadow-xl px-6 py-10 overflow-hidden">
-  <div className="relative z-10 mb-8 text-center">
-    <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-2">
+  {/* Ligne du bas : 2 cards */}
+  <div className="flex flex-wrap justify-center gap-8">
+    <SubjectCard
+      title="Français"
+      description="Grammaire, conjugaison, vocabulaire"
+      icon={<BookText className="w-7 h-7 text-white" />}
+      bg="bg-gradient-to-br from-red-500 to-pink-600"
+    />
+    <SubjectCard
+      title="Anglais"
+      description="Compréhension, expression, culture"
+      icon={<Languages className="w-7 h-7 text-white" />}
+      bg="bg-gradient-to-br from-green-500 to-emerald-500"
+    />
+  </div>
+</section>
+
+
+<section className="relative w-full max-w-[360px] mx-auto bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg px-6 py-6 overflow-hidden">
+  <div className="relative z-10 mb-4 text-center">
+    <h2 className="text-lg font-semibold text-white flex items-center justify-center gap-2">
       🌍 Quiz de Géographie
     </h2>
-    <p className="mt-2 text-sm text-gray-400">
-      Explore le monde avec le globe interactif.
-    </p>
+    <p className="mt-1 text-sm text-gray-300">Explore le monde avec le globe interactif.</p>
   </div>
 
   <div className="relative z-10 flex items-center justify-center">
-    <div className="w-[80vw] sm:w-[60vw] md:w-[500px] lg:w-[600px] xl:w-[700px] aspect-square">
-      <Globe className="w-full h-full" config={GLOBE_CONFIG_EARTH_COLORS} />
+    <div className="w-[200px] aspect-square">
+      <Globe className="w-[200px] h-[200px]" config={GLOBE_CONFIG_EARTH_COLORS} />
     </div>
   </div>
 
-  <div className="relative z-10 mt-8 flex justify-center">
-    <button className="px-6 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 transition text-white text-sm font-medium shadow-md">
+  <div className="relative z-10 mt-4 flex justify-center">
+    <button className="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 transition text-white text-sm font-medium shadow">
       Lancer le quiz →
     </button>
   </div>
 
   <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent z-0" />
 </section>
+
 
       </main>
     </div>
