@@ -188,7 +188,7 @@ export function BeamsBackground({
           >
             <button
               className="bg-cyan-400 hover:bg-white text-black font-semibold px-6 py-3 rounded-xl transition"
-              onClick={() => router.push("/accueil")}
+              onClick={() => router.push("/login")}
             >
               Commencer maintenant →
             </button>

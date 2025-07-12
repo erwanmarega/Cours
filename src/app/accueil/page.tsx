@@ -4,6 +4,8 @@ import { Globe } from "@/components/ui/globe"
 import { motion } from "framer-motion"
 import { Book, Atom, Globe as GlobeIcon, BookText, Languages } from "lucide-react"
 import type { COBEOptions } from "cobe"
+import Link from "next/link"
+
 
 export default function Dashboard() {
   const GLOBE_CONFIG_EARTH_COLORS: COBEOptions = {
@@ -87,11 +89,11 @@ export default function Dashboard() {
     </div>
   </div>
 
-  <div className="relative z-10 mt-4 flex justify-center">
-    <button className="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 transition text-white text-sm font-medium shadow">
-      Lancer le quiz →
-    </button>
-  </div>
+  <Link href="/quiz">
+  <button className="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 transition text-white text-sm font-medium shadow">
+    Lancer le quiz →
+  </button>
+</Link>
 
   <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent z-0" />
 </section>
