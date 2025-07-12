@@ -5,8 +5,27 @@ import { motion } from "framer-motion"
 import { Book, Atom, Globe as GlobeIcon } from "lucide-react"
 import { useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
+import type { COBEOptions } from "cobe"
+
 
 export default function Dashboard() {
+
+  const GLOBE_CONFIG_EARTH_COLORS: COBEOptions = {
+    width: 800,
+    height: 800,
+    devicePixelRatio: 2,
+    phi: 0,
+    theta: 0.3,
+    dark: 1,
+    diffuse: 1.2,
+    mapSamples: 16000,
+    mapBrightness: 3,
+    baseColor: [0.2, 0.4, 1], // bleu océan (couleur des zones non marquées)
+    markerColor: [0.8, 0.5, 0.1], 
+    glowColor: [0.1, 0.6, 1],
+    markers: [], 
+    onRender: () => {},
+  }
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const beamsRef = useRef<Beam[]>([])
   const animationFrameRef = useRef<number>(0)
@@ -57,6 +76,8 @@ export default function Dashboard() {
     }
   }, [])
 
+  
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-black text-white font-sans">
       <canvas ref={canvasRef} className="absolute inset-0 z-0" style={{ filter: "blur(15px)" }} />
@@ -68,7 +89,6 @@ export default function Dashboard() {
       />
 
       <main className="relative z-10 px-6 py-10">
-        {/* Header */}
         <header className="mb-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h1 className="text-4xl font-extrabold tracking-tight text-white">Bienvenue 👋</h1>
@@ -79,7 +99,6 @@ export default function Dashboard() {
           </div>
         </header>
 
-        {/* Subject Cards */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <SubjectCard
             title="Mathématiques"
@@ -101,7 +120,6 @@ export default function Dashboard() {
           />
         </section>
 
-        {/* Globe Card */}
         <section className="relative bg-black rounded-3xl border border-white/20 shadow-xl px-6 py-10 overflow-hidden min-h-[500px]">
           <canvas
             ref={canvasRef}
@@ -121,7 +139,7 @@ export default function Dashboard() {
 
           <div className="relative z-10 flex items-center justify-center w-full">
             <div className="w-[80vw] sm:w-[60vw] md:w-[500px] lg:w-[600px] xl:w-[700px] aspect-square">
-              <Globe className="w-full h-full" />
+            <Globe className="w-full h-full" config={GLOBE_CONFIG_EARTH_COLORS} />
             </div>
           </div>
 
@@ -160,7 +178,6 @@ function SubjectCard({
   )
 }
 
-// --- BEAM UTILS ---
 
 interface Beam {
   x: number
