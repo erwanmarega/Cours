@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
 import { useRouter } from "next/navigation"
-
+import Image from 'next/image' 
 
 
 const GoogleIcon = () => (
@@ -50,6 +50,7 @@ const TestimonialCard = ({ testimonial, delay }: { testimonial: Testimonial, del
   </div>
 )
 
+
 export const SignInPage: React.FC<SignInPageProps> = ({
   title = <span className="font-light tracking-tighter text-white">Welcome</span>,
   description = "Access your account and continue your journey with us",
@@ -62,6 +63,8 @@ export const SignInPage: React.FC<SignInPageProps> = ({
   
 }) => {
   const [showPassword, setShowPassword] = useState(false)
+
+  
 
   const router = useRouter()
   return (
@@ -123,18 +126,14 @@ export const SignInPage: React.FC<SignInPageProps> = ({
         </div>
       </section>
 
-      {heroImageSrc && (
-        <section className="hidden md:block flex-1 relative p-4">
-          <div className="animate-slide-right animate-delay-300 absolute inset-4 rounded-3xl bg-cover bg-center" style={{ backgroundImage: `url(${heroImageSrc})` }}></div>
-          {testimonials.length > 0 && (
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 px-8 w-full justify-center">
-              <TestimonialCard testimonial={testimonials[0]} delay="animate-delay-1000" />
-              {testimonials[1] && <div className="hidden xl:flex"><TestimonialCard testimonial={testimonials[1]} delay="animate-delay-1200" /></div>}
-              {testimonials[2] && <div className="hidden 2xl:flex"><TestimonialCard testimonial={testimonials[2]} delay="animate-delay-1400" /></div>}
-            </div>
-          )}
-        </section>
-      )}
+      <Image
+  src="/espacee.jpg"
+  alt="Astronaute"
+  width={900}
+  height={900}
+  className="rounded-2xl shadow-lg object-cover"
+/>
+
     </div>
   )
 }
