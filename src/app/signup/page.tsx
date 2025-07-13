@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState } from 'react'
-import { Eye, EyeOff } from 'lucide-react'
+import { useState } from "react"
+import { Eye, EyeOff } from "lucide-react"
 import { useRouter } from "next/navigation"
-import Image from 'next/image'
+import Image from "next/image"
 
 const GoogleIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 48 48">
@@ -20,7 +20,7 @@ const GlassInputWrapper = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
-export const SignUpPage: React.FC = () => {
+export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
 
@@ -29,21 +29,41 @@ export const SignUpPage: React.FC = () => {
       <section className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           <div className="flex flex-col gap-6">
-            <h1 className="animate-element animate-delay-100 text-4xl md:text-5xl font-semibold leading-tight">Create Account</h1>
-            <p className="animate-element animate-delay-200 text-gray-400">Join our platform to explore the universe with us.</p>
+            <h1 className="animate-element animate-delay-100 text-4xl md:text-5xl font-semibold leading-tight">
+              Create Account
+            </h1>
+            <p className="animate-element animate-delay-200 text-gray-400">
+              Join our platform to explore the universe with us.
+            </p>
 
-            <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); router.push("/accueil") }}>
+            <form
+              className="space-y-5"
+              onSubmit={(e) => {
+                e.preventDefault()
+                router.push("/accueil")
+              }}
+            >
               <div className="animate-element animate-delay-300">
                 <label className="text-sm font-medium text-gray-400">Username</label>
                 <GlassInputWrapper>
-                  <input name="username" type="text" placeholder="Choose a username" className="w-full bg-transparent text-sm text-white p-4 placeholder-gray-500 rounded-2xl focus:outline-none" />
+                  <input
+                    name="username"
+                    type="text"
+                    placeholder="Choose a username"
+                    className="w-full bg-transparent text-sm text-white p-4 placeholder-gray-500 rounded-2xl focus:outline-none"
+                  />
                 </GlassInputWrapper>
               </div>
 
               <div className="animate-element animate-delay-400">
                 <label className="text-sm font-medium text-gray-400">Email Address</label>
                 <GlassInputWrapper>
-                  <input name="email" type="email" placeholder="Enter your email" className="w-full bg-transparent text-sm text-white p-4 placeholder-gray-500 rounded-2xl focus:outline-none" />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full bg-transparent text-sm text-white p-4 placeholder-gray-500 rounded-2xl focus:outline-none"
+                  />
                 </GlassInputWrapper>
               </div>
 
@@ -51,15 +71,31 @@ export const SignUpPage: React.FC = () => {
                 <label className="text-sm font-medium text-gray-400">Password</label>
                 <GlassInputWrapper>
                   <div className="relative">
-                    <input name="password" type={showPassword ? 'text' : 'password'} placeholder="Create a password" className="w-full bg-transparent text-sm text-white p-4 pr-12 placeholder-gray-500 rounded-2xl focus:outline-none" />
-                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute inset-y-0 right-3 flex items-center">
-                      {showPassword ? <EyeOff className="w-5 h-5 text-gray-400 hover:text-white transition-colors" /> : <Eye className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />}
+                    <input
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Create a password"
+                      className="w-full bg-transparent text-sm text-white p-4 pr-12 placeholder-gray-500 rounded-2xl focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute inset-y-0 right-3 flex items-center"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
+                      ) : (
+                        <Eye className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
+                      )}
                     </button>
                   </div>
                 </GlassInputWrapper>
               </div>
 
-              <button type="submit" className="animate-element animate-delay-600 w-full rounded-2xl bg-primary py-4 font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+              <button
+                type="submit"
+                className="animate-element animate-delay-600 w-full rounded-2xl bg-primary py-4 font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
                 Sign Up
               </button>
             </form>
@@ -75,7 +111,10 @@ export const SignUpPage: React.FC = () => {
             </button>
 
             <p className="animate-element animate-delay-900 text-center text-sm text-gray-400">
-              Already have an account? <a href="/login" className="text-violet-400 hover:underline transition-colors">Sign In</a>
+              Already have an account?{" "}
+              <a href="/login" className="text-violet-400 hover:underline transition-colors">
+                Sign In
+              </a>
             </p>
           </div>
         </div>
@@ -90,8 +129,4 @@ export const SignUpPage: React.FC = () => {
       />
     </div>
   )
-
-
 }
-
-export default SignUpPage
