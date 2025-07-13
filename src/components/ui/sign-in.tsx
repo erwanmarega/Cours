@@ -120,7 +120,13 @@ export const SignInPage: React.FC<SignInPageProps> = ({
             </button>
 
             <p className="animate-element animate-delay-900 text-center text-sm text-gray-400">
-              New to our platform? <a href="#" onClick={(e) => { e.preventDefault(); onCreateAccount?.() }} className="text-violet-400 hover:underline transition-colors">Create Account</a>
+              New to our platform?{" "}
+              <button
+              onClick={() => router.push("/signup")}
+              className="text-violet-400 hover:underline transition-colors"
+            >
+                Create Account
+              </button>
             </p>
           </div>
         </div>
